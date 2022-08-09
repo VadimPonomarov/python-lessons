@@ -23,7 +23,7 @@ digit_in_string()
 # наприклад:
 #   st = 'as 23 fdfdg544 34' #введена строка
 #   23, 544, 34              #вивело в консолі
-# #################################################################################
+# #################################################################################'''
 
 def digits_in_string():
     st = input('Введите строку символов, в т.ч. числа: ')
@@ -41,8 +41,11 @@ def digits_in_string():
         if i:
             l1.remove('')
 
-    print(','.join(l1))
-
+    l = list()
+    for i in l1:
+        if i != '':
+            l.append(i)
+    print(','.join(l))
 
 digits_in_string()
 
@@ -162,15 +165,15 @@ list_calc([22, 3, 5, 2, 8, 2, -23, 8, 23, 5])
 # 7 - вивести на екран пустий квадрат з "*" сторона якого вказана як агрумент функції
 
 def square(num: int):
-    lst1 = ['*' for i in range(num)]
-    lst2 = ['*'] + [' ' for i in range(num-2)] + ['*']
-    for i in range(num+1):
-        if i == 1 or i == num:
+    lst1 = [f'{"*":3}' for i in range(num)]
+    lst2 = [f'{"*":3}'] + [f'{"":3}' for i in range(num-2)] + ['*']
+    for i in range(num):
+        if i == 0 or i == num-1:
             print(''.join(lst1))
         else:
             print(''.join(lst2))
 
-square(15)
+square(5)
 
 
 
