@@ -66,6 +66,13 @@ def capitalize_list():
 
 capitalize_list()
 
+def capitalize_list_gen():
+    greeting = 'Hello, world'
+    print([i.capitalize() for i in greeting])
+
+capitalize_list_gen()
+
+
 # 4 - з диапозону від 0-50 записати тільки не парні числа при цьому піднести їх до квадрату
 #приклад:
 #[0, 1, 4, 9, 16, 25, 36, 49, 64, 81, 100, 121, 144, 169, 196, 225, 256, 289, 324, ...]
