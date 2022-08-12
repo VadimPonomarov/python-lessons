@@ -51,7 +51,7 @@ expanded_form(70304) # return '70000 + 300 + 4'
 
 
 def expanded_form(num):
-    l = str(num)
+    l = list(str(num))
     length = len(l)
     res_list = list()
     j = 0
@@ -105,4 +105,6 @@ my_function()
 
 print(('\n' * 2))
 
+
+print(('\n' * 2 + '# expanded_form(55050)\n' + '*' * 40))
 expanded_form(55050)
