@@ -19,10 +19,11 @@ class Rectangle:
     def __init__(self, x: int = None, y: int = None):
         self.__x = x
         self.__y = y
+        self.__aria = x * y
 
     @property
     def aria(self):
-        return self.__x * self.__y
+        return self.__aria
 
     def __add__(self, other):
         return other.aria + self.aria
@@ -99,19 +100,24 @@ class Human:
 
 
 class Cinderella(Human):
-    count = 0
+    __counter = 0
 
     def __init__(self, name: str, age: int, size: int):
         super().__init__(name, age)
         self._size = size
-        if type(self) is Cinderella:
-            Cinderella.count += 1
+        if isinstance(self, Cinderella):
+            self.counter_up()
 
     def __str__(self):
         return str(self.__dict__)
 
-    def counter(self):
-        return self.count
+    @classmethod
+    def counter(cls):
+        return cls.__counter
+
+    @classmethod
+    def counter_up(cls):
+        cls.__counter += 1
 
 
 class Prince(Cinderella):
@@ -137,7 +143,7 @@ prince = Prince("Prince", 33, 37)
 print(prince.find_cinderella(cinderella_list))
 
 print("-" * 40 + "\n")
-print("Cinderella count: ", Cinderella.count)
+print("Cinderella counter: ", Cinderella.counter())
 print("-" * 40 + "\n")
 
 '''
@@ -191,20 +197,20 @@ class Magazine(Printable):
 class Main:
     __printable_list = list()
 
-    @staticmethod
-    def add(obj):
-        Main.__printable_list.append(obj)
+    @classmethod
+    def add(cls,obj):
+        cls.__printable_list.append(obj)
 
-    @staticmethod
-    def show_all_magazines():
-        for item in Main.__printable_list:
-            if type(item) is Magazine:
+    @classmethod
+    def show_all_magazines(cls):
+        for item in cls.__printable_list:
+            if isinstance(item, Magazine):
                 item.print()
 
-    @staticmethod
-    def show_all_books():
-        for item in Main.__printable_list:
-            if type(item) is Book:
+    @classmethod
+    def show_all_books(cls):
+        for item in cls.__printable_list:
+            if isinstance(item, Book):
                 item.print()
 
 
